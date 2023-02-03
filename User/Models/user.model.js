@@ -22,6 +22,9 @@ const userDetails= new Schema(
     createdAt:{
         type: Date,
         default:()=>Date.now(),
+    },
+    userId:{
+        type:String,
     }
     },
     {timestamps: true}

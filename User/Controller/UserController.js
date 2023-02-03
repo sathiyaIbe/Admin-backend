@@ -2,10 +2,44 @@ import userDb from "../Models/user.model.js"
 
 const userRegister=async(req,res)=>{     
     try{
-        var userData=await  new userDb(req.body).save()
+        var userName=req.body.username
+        if (userName.length>2){
+            var val=req.body.username.substring(0,3)
+        }else{
+            var val=userName
+        }
+          var checkId=true
+        function checkVal(val){
+            let id=val+'-'
+            for (let i = 0; i < 5; i++) {
+                id += (Math.floor(Math.random() * 9));
+                if (id.length===7){
+                    return id
+                }
+                else if(id.length>7){
+                    id=val+'-'
+                }
+            } 
+    }
+  
+  var userId=''
+  var tempId=(checkVal(val))
+   while(checkId){
+    var checksId= await userDb.findOne({userId:tempId})
+    if(checksId===null){
+         checkId=false
+         userId=tempId
+    }else{
+
+        tempId=(checkVal(val))
+    }
+   }
+        const data={...req.body, userId}
+
+        var userData=await  new userDb(data).save()
         res.status(200).json(userData)
     }catch(err){
-        return res.status(400).json({error:'Internal Error'})
+        return res.status(400).json({error:err})
     }
 }
 
@@ -81,8 +115,6 @@ const countUser=async(req, res)=>{
         return res.status(400).json({error:'Internal Error'})
     }
 }
-
-
   const Controller={userRegister, getUserDetails, deleteUser, deleteMultipleUser, updateUser, countUser}
 
 
