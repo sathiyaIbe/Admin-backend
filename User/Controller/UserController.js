@@ -10,7 +10,7 @@ const userRegister=async(req,res)=>{
         }
           var checkId=true
         function checkVal(val){
-            let id=val+'-'
+            let id=val
             for (let i = 0; i < 5; i++) {
                 id += (Math.floor(Math.random() * 9));
                 if (id.length===7){

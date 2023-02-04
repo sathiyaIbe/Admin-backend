@@ -14,7 +14,7 @@ app.get(('/'),(req,res)=>{
 app.use('/api', createProxyMiddleware({target: process.env.Login, changeOrigin:true}))
 app.use('/user', createProxyMiddleware({target:process.env.User, changeOrigin:true}))
 app.use('/cab', createProxyMiddleware({target:process.env.CabService, changeOrigin:true}))
-
+app.use('/admin',createProxyMiddleware({target:process.env.Admin, changeOrigin:true}))
 
 
 
