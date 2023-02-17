@@ -17,7 +17,12 @@ const dashbaordData= new Schema(
         user:{
             type:Number 
         },
-
+        userActive:{
+            type:Number
+        },
+        userInActive:{
+            type:Number
+        },
 
     },
     {timestamps:true}
