@@ -1,4 +1,4 @@
-impot userDb from "../Models/user.model.js"
+import userDb from "../Models/user.model.js"
 
 const userRegister=async(req,res)=>{     
     try{
