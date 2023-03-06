@@ -43,6 +43,21 @@ const userRegister=async(req,res)=>{
     }
 }
 
+const  importUsers=async(req,res)=>{
+    const data=(req.body)
+    console.log(data)
+  
+    
+    try{
+        const importData= await   userDb.insertMany(data)
+        console.log(importData)
+        res.status(200).json(importData)
+    }catch(err){
+        console.log(err)
+        res.status(400).json({message:"Internal Error"})
+    }
+}
+
 const getUserDetails =async(req,res)=>{
   
       try{
@@ -58,11 +73,8 @@ const deleteUser=async(req,res)=>{
      const id=req.params.id
    
       try {
-   
           var deleteUser=await userDb.deleteOne({_id:id});
-          res.status(200).json({message:'Deleted'})
-  
-          
+          res.status(200).json({message:'Deleted'})  
       }catch(err){
         res.status(400).json({message:"Internal Error"})
       }
@@ -115,7 +127,7 @@ const countUser=async(req, res)=>{
         return res.status(400).json({error:'Internal Error'})
     }
 }
-  const Controller={userRegister, getUserDetails, deleteUser, deleteMultipleUser, updateUser, countUser}
+  const Controller={userRegister, getUserDetails, deleteUser, deleteMultipleUser, updateUser, countUser, importUsers}
 
 
   export default Controller
