@@ -1,5 +1,6 @@
 import userDb from "../Models/user.model.js"
 
+
 const userRegister=async(req,res)=>{     
     try{
         var userName=req.body.username
