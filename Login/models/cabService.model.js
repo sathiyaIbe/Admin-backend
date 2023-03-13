@@ -1,29 +1,23 @@
-const mongoose=require('mongoose')
-const db=require('../db/adminDb')
-
-const Schema=mongoose.Schema
-
-const CabServiceSchema=new Schema(
+const mongoose = require('mongoose')
+const db = require('../db/adminDb')
+const Schema = mongoose.Schema
+const CabServiceSchema = new Schema(
     {
-        DriverName:{
-            type:String,
-
+        DriverName: {
+            type: String,
         },
-        CabId:{
-            type:String,
+        CabId: {
+            type: String,
         },
-        From:{
-            type:String,
-
+        From: {
+            type: String,
         },
-        To:{
-            type:String,
+        To: {
+            type: String,
         },
-        Status:{
-            type:String,
+        Status: {
+            type: String,
         }
     }
 )
-
-module.exports=mongoose.model("CabService", CabServiceSchema)
-
+module.exports = mongoose.model("CabService", CabServiceSchema)

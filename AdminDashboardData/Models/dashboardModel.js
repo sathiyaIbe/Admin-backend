@@ -1,33 +1,28 @@
-import { Schema as _Schema} from "mongoose";
+import { Schema as _Schema } from "mongoose";
 import adminDbss from '../Db/adminDashboardDb.js'
-
-const Schema=_Schema
-
-const dashbaordData= new Schema(
+const Schema = _Schema
+const dashbaordData = new Schema(
     {
-        month:{
-            type:String
+        month: {
+            type: String
         },
-        revenue:{
-            type:Number 
+        revenue: {
+            type: Number
         },
-        booking:{
-            type:Number 
+        booking: {
+            type: Number
         },
-        user:{
-            type:Number 
+        user: {
+            type: Number
         },
-        userActive:{
-            type:Number
+        userActive: {
+            type: Number
         },
-        userInActive:{
-            type:Number
+        userInActive: {
+            type: Number
         },
-
     },
-    {timestamps:true}
+    { timestamps: true }
 )
-
-var dashboardDb=adminDbss.model('adminService', dashbaordData)
-
+var dashboardDb = adminDbss.model('adminService', dashbaordData)
 export default dashboardDb
